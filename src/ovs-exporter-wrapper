@@ -1,0 +1,12 @@
+#!/bin/sh
+
+. "${SNAP}/utilities/setup"
+
+exec "${SNAP}/bin/ovs-exporter" \
+    -web.listen-address="$(listen_address)" \
+    -database.vswitch.socket.remote unix:/run/openvswitch/db.sock \
+    -database.vswitch.file.pid.path /run/openvswitch/ovsdb-server.pid \
+    -service.vswitchd.file.pid.path /run/openvswitch/ovs-vswitchd.pid \
+    -service.ovncontroller.file.pid.path /run/ovn/ovn-controller.pid \
+    -service.ovncontroller.file.log.path /var/log/ovn/ovn-controller.log \
+    -system.run.dir /run/openvswitch
