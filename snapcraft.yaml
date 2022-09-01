@@ -1,6 +1,6 @@
 name: prometheus-ovs-exporter
-version: 1.0.2
-base: core18
+version: 1.0.3
+base: core20
 grade: stable
 summary: Prometheus OpenVswitch Exporter
 description: |
@@ -12,9 +12,9 @@ architectures:
 parts:
   ovs-exporter:
     plugin: go
-    go-channel: 1.14/stable
+    go-channel: 1.18/stable
     source: https://github.com/greenpau/ovs_exporter.git
-    source-tag: v1.0.2
+    source-tag: v1.0.3
     build-packages:
       - gcc
       - golang-go
