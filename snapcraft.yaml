@@ -13,8 +13,9 @@ parts:
   ovs-exporter:
     plugin: go
     go-channel: 1.18/stable
-    source: https://github.com/greenpau/ovs_exporter.git
-    source-tag: v1.0.3
+    source: https://github.com/dshcherb/ovs_exporter.git
+    source-branch: 2022-09-multiple-fixes
+    # source-tag: v1.0.3
     build-packages:
       - gcc
       - golang-go
