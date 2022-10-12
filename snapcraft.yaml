@@ -56,6 +56,22 @@ parts:
     organize:
       ovs-exporter-wrapper: bin/ovs-exporter.wrapper
       hooks/configure: meta/hooks/configure
+plugs:
+  etc-openvswitch:
+    interface: system-files
+    read:
+    - /etc/openvswitch
+  # For Unix sockets read-write permissions are needed even though the
+  # requests over those sockets will be read-only (in order to write a
+  # request we need write permissions).
+  var-run-openvswitch:
+    interface: system-files
+    write:
+    - /var/run/openvswitch
+  run-openvswitch:
+    interface: system-files
+    write:
+    - /run/openvswitch
 apps:
   ovs-exporter:
     command: 'bin/ovs-exporter.wrapper'
@@ -67,6 +83,9 @@ apps:
       - network-observe
       - netlink-audit
       - kernel-module-observe
+      - etc-openvswitch
+      - var-run-openvswitch
+      - run-openvswitch
     daemon: simple
 hooks:
   configure:
